@@ -1,0 +1,18 @@
+/*create table*/
+create table new4m(phone char(11))
+;
+load data infile'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/new4m.txt' into table new4m
+;
+alter table new4m add index phone(phone)
+;
+
+/*load data*/
+load data infile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/finance_imsi2.csv' into table finance_imsi2
+fields terminated by ','
+enclosed by '"'
+lines terminated by '\r\n'
+;
+
+/*expand capacity*/
+show variables like "%_buffer%";
+SET GLOBAL innodb_buffer_pool_size=1073741824;
