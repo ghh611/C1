@@ -1,0 +1,16 @@
+/*operator screening*/
+select a.phone from (select * from xxywyc)a join (select * from operator where operator='移动' limit 209330)b on left(a.phone,7)=b.id;
+select a.phone from (select * from xxywyc)a join (select * from operator where operator='联通' limit 115317)b on left(a.phone,7)=b.id;
+select a.phone from (select * from xxywyc)a join (select * from operator where operator='电信' limit 98908)b on left(a.phone,7)=b.id;
+;
+
+create table new4m_m
+select a.phone from (select * from new4m)a join (select * from operator where operator='移动' limit 209330)b on left(a.phone,7)=b.id
+;
+create table new4m_u
+select a.phone from (select * from new4m)a join (select * from operator where operator='联通' limit 115317)b on left(a.phone,7)=b.id
+;
+alter table new4m_m add index phone(phone)
+;
+alter table new4m_u add index phone(phone)
+;
