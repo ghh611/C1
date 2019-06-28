@@ -1,0 +1,30 @@
+/*dedup*/
+drop table test;
+create table test
+select a.phone from (select * from new4h_m limit 982471
+)a left join (select * from cqttl_m limit 12227290
+)b on a.phone=b.phone where b.phone is null
+;
+
+drop table new4h_m
+; 
+create table new4h_m
+select * from test
+;
+drop table test
+;
+
+/*union table*/
+create table cqttl_m1
+(select phone from cqttl_m limit 12227290
+)
+union (select phone from new4h_m limit 294919
+)
+;
+
+drop table cqttl_m
+;
+create table cqttl_m
+select * from cqttl_m1
+;
+drop table cqttl_m1
